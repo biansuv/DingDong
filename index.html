@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biansuv Ding-Dong</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2c3e50">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+<!-- ✅ STICKY HEADER -->
+<header class="header">
+  <div class="header-row">
+    <div class="header-title">Biansuv Ding-Dong</div>
+    <button id="installBtn" class="install-btn hidden">Install</button>
+  </div>
+</header>
+
+
+
+<!-- ✅ SCROLLABLE CONTENT -->
+<main class="main-content">
+
+<div class="container">
+
+<section class="card">
+
+<h2>Create / Edit Preset</h2>
+
+<div class="form-group">
+<label>Preset Name</label>
+<input id="presetName" placeholder="Preset Name">
+</div>
+
+<div class="form-group">
+<label>Times</label>
+<div id="timeContainer">
+<input type="time" class="alarmTime">
+</div>
+<button id="addTimeBtn" class="secondary-btn">+ Add Time</button>
+</div>
+
+<div class="form-group">
+<label>Days</label>
+<div class="days">
+<label><input type="checkbox" value="Sun"> Sun</label>
+<label><input type="checkbox" value="Mon"> Mon</label>
+<label><input type="checkbox" value="Tue"> Tue</label>
+<label><input type="checkbox" value="Wed"> Wed</label>
+<label><input type="checkbox" value="Thu"> Thu</label>
+<label><input type="checkbox" value="Fri"> Fri</label>
+<label><input type="checkbox" value="Sat"> Sat</label>
+</div>
+</div>
+
+<button id="savePresetBtn" class="primary-btn">Save Preset</button>
+
+</section>
+
+<section class="card">
+<h2>Saved Presets</h2>
+<div id="presetList"></div>
+</section>
+
+</div>
+
+</main>
+
+<!-- ✅ STICKY FOOTER -->
+<footer class="footer">
+© <span id="year"></span> Developed by 
+<strong>
+<a href="https://www.biansuv.com" target="_blank" rel="noopener">
+Biansuv Technologies LLP
+</a>
+</strong>
+</footer>
+
+</div>
+
+<audio id="alarmSound" src="alarm.mp3"></audio>
+
+<script src="app.js"></script>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.classList.remove("hidden");
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  const result = await deferredPrompt.userChoice;
+
+  if (result.outcome === "accepted") {
+    installBtn.classList.add("hidden");
+  }
+
+  deferredPrompt = null;
+});
+
+window.addEventListener("appinstalled", () => {
+  installBtn.classList.add("hidden");
+});
+</script>
+
+
+</body>
+</html>

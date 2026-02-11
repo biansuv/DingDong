@@ -1,0 +1,230 @@
+/* RESET */
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html, body{
+height:100%;
+font-family:system-ui, Arial;
+background:#eef2f7;
+}
+
+/* PAGE LAYOUT */
+.page-wrapper{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+.header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:16px;
+font-size:20px;
+font-weight:600;
+box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* MAIN SCROLL AREA */
+.main-content{
+flex:1;
+width:100%;
+}
+
+/* CONTENT CONTAINER */
+.container{
+max-width:700px;
+margin:auto;
+padding:15px;
+width:100%;
+}
+
+/* CARD */
+.card{
+background:white;
+padding:18px;
+border-radius:14px;
+margin-bottom:20px;
+box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* FORM */
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+font-weight:600;
+margin-bottom:6px;
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:1px solid #d0d6e0;
+font-size:15px;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+margin-top:10px;
+}
+
+.primary-btn{
+background:#2c3e50;
+color:white;
+font-weight:600;
+}
+
+.secondary-btn{
+background:#dfe6ef;
+color:#2c3e50;
+}
+
+/* DAYS GRID */
+.days{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+}
+
+.days label{
+display:flex;
+align-items:center;
+gap:6px;
+background:#f4f7fb;
+padding:8px;
+border-radius:8px;
+font-size:14px;
+}
+
+/* PRESET CARD */
+.preset{
+background:#fafafa;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #e2e6ef;
+}
+
+/* EDIT DELETE BUTTON ROW */
+.preset-buttons{
+display:flex;
+gap:8px;
+margin-top:8px;
+}
+
+.preset-buttons button{
+flex:1;
+margin-top:0;
+}
+
+/* FOOTER (Sticky Bottom via Flex Layout) */
+.footer{
+text-align:center;
+padding:18px 10px;
+font-size:14px;
+color:#666;
+background:#f5f7fb;
+border-top:1px solid #e2e6ef;
+}
+
+.footer a{
+color:#2c3e50;
+text-decoration:none;
+font-weight:600;
+}
+
+.footer a:hover{
+text-decoration:underline;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+
+.days{
+grid-template-columns:repeat(2,1fr);
+}
+
+.header{
+font-size:18px;
+padding:14px;
+}
+
+.container{
+padding:12px;
+}
+
+.card{
+padding:14px;
+}
+
+}
+
+/* HEADER */
+.header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#2c3e50;
+color:white;
+box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* HEADER ROW */
+.header-row{
+max-width:700px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 16px;
+}
+
+/* TITLE */
+.header-title{
+font-size:20px;
+font-weight:600;
+}
+
+/* INSTALL BUTTON (SMALL APP BAR STYLE) */
+.install-btn{
+width:auto;                 /* IMPORTANT */
+background:white;
+color:#2c3e50;
+border:none;
+padding:6px 14px;
+border-radius:999px;        /* pill shape */
+font-size:13px;
+font-weight:600;
+cursor:pointer;
+white-space:nowrap;
+transition:all .2s ease;
+}
+
+/* Hover */
+.install-btn:hover{
+background:#eef2f7;
+}
+
+/* Hidden */
+.hidden{
+display:none;
+}
+
